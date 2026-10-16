@@ -9,7 +9,8 @@ const mime = {
   '.html':'text/html; charset=utf-8', '.css':'text/css; charset=utf-8',
   '.js':'text/javascript; charset=utf-8', '.svg':'image/svg+xml',
   '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg',
-  '.webp':'image/webp', '.mp4':'video/mp4', '.ico':'image/x-icon'
+  '.webp':'image/webp', '.mp4':'video/mp4', '.ico':'image/x-icon',
+  '.txt':'text/plain; charset=utf-8', '.xml':'application/xml; charset=utf-8'
 };
 const excluded = new Set(['package.json','package-lock.json','build.js','server.js','_headers']);
 const port = Number(process.env.PORT) || 3000;
