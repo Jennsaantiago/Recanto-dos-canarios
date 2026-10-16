@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = __dirname;
 const output = path.join(root, 'dist');
-const files = ['index.html','empreendimento.html','lazer.html','localizacao.html','contato.html','styles.css','menu-rodape.css','video-localizacao.css','video-localizacao.mp4','video-empreendimento.mp4','capa-video-localizacao.webp','capa-video-empreendimento.webp','foto-aerea-01.webp','foto-aerea-02.webp','foto-aerea-03.webp','app.js','.htaccess','_headers'];
+const files = ['index.html','empreendimento.html','lazer.html','localizacao.html','contato.html','styles.css','menu-rodape.css','video-localizacao.css','video-localizacao.mp4','video-empreendimento.mp4','capa-video-localizacao.webp','capa-video-empreendimento.webp','foto-aerea-01.webp','foto-aerea-02.webp','foto-aerea-03.webp','foto-lazer-jetski.webp','foto-empreendimento-lago.webp','foto-portaria-dia.webp','foto-portaria-noite.webp','app.js','.htaccess','_headers'];
 const assetDirs = ['assets','images','imagens','videos','media','fonts'];
 fs.rmSync(output, { recursive: true, force: true });
 fs.mkdirSync(output, { recursive: true });
