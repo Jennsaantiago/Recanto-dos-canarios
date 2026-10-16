@@ -249,8 +249,7 @@
 
 /* v14 — mapa incorporado, destaque do asfalto e novos destaques de lazer */
 .recanto-map-access{display:block}
-.recanto-map-embed{margin:24px 0 18px;border:2px solid #d4af37;border-radius:18px;overflow:hidden;background:#f3e9d2;box-shadow:0 14px 34px rgba(0,0,0,.12)}
-.recanto-map-embed iframe{display:block;width:100%;height:420px;border:0}
+
 .recanto-map-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:16px}
 .recanto-map-actions .recanto-map-button,.recanto-map-actions .map-link{margin:0}
 .recanto-nearby-badge{display:inline-block;padding:18px 20px;border-left:5px solid #d4af37;background:#415635;color:#fff1cf;font-weight:800;line-height:1.5;border-radius:0 8px 8px 0;text-transform:uppercase;letter-spacing:.03em}
@@ -258,11 +257,37 @@
 .recanto-lazer-highlights{padding:clamp(46px,7vw,86px) 0;background:#f3e9d2;color:#1e2e25}
 .recanto-lazer-highlights h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4vw,3.5rem);margin:0 0 14px;color:#203227}
 .recanto-lazer-highlights .lead{max-width:760px;font-size:1.05rem;line-height:1.8;color:#31463a;margin:0 0 28px}
-.recanto-lazer-highlight-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.recanto-lazer-highlight-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1090px;margin-inline:auto}
 .recanto-lazer-highlight-card{background:#fff;border:1px solid rgba(47,74,58,.15);border-radius:18px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.07)}
-.recanto-lazer-highlight-card img{display:block;width:100%;height:260px;object-fit:cover}
-.recanto-lazer-highlight-card div{padding:18px 18px 20px}
+.recanto-lazer-highlight-card img{display:block;width:100%;height:160px;object-fit:cover}
+.recanto-lazer-highlight-card div{padding:19px 20px 23px}
 .recanto-lazer-highlight-card h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;line-height:1.08;margin:0 0 10px;color:#1e2e25}
 .recanto-lazer-highlight-card p{margin:0;color:#44574d;line-height:1.7}
-@media(max-width:900px){.recanto-lazer-highlight-grid{grid-template-columns:1fr}.recanto-map-embed iframe{height:360px}}
-@media(max-width:560px){.recanto-map-actions{flex-direction:column;align-items:stretch}.recanto-map-actions .recanto-map-button,.recanto-map-actions .map-link{width:100%;text-align:center}.recanto-map-embed iframe{height:320px}}
+@media(max-width:900px){.recanto-lazer-highlight-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.recanto-map-actions{flex-direction:column;align-items:stretch}.recanto-map-actions .recanto-map-button,.recanto-map-actions .map-link{width:100%;text-align:center}}
+
+
+/* v15 — banners exclusivos, com fundo próprio e cache renovado. */
+.recanto-page-hero.recanto-page-hero--empreendimento {
+  background-image: linear-gradient(90deg,rgba(17,33,26,.88),rgba(17,33,26,.37)),url('empreendimento-hero-3d.webp');
+  background-position:center 46%;
+}
+.recanto-page-hero.recanto-page-hero--localizacao {
+  background-image: linear-gradient(90deg,rgba(17,33,26,.88),rgba(17,33,26,.34)),url('localizacao-hero-terreno-3d.webp');
+  background-position:center 57%;
+}
+/* v15 — prévia visual local: o mapa verdadeiro abre no Google Maps, sem iframe bloqueável. */
+.recanto-map-preview {display:block;position:relative;margin:24px 0 18px;overflow:hidden;border:2px solid #d4af37;border-radius:18px;background:#1e2e25;text-decoration:none;box-shadow:0 14px 34px rgba(0,0,0,.12)}
+.recanto-map-preview img{display:block;width:100%;height:clamp(240px,34vw,385px);object-fit:cover;object-position:center 56%;transition:transform .25s ease;opacity:.88}
+.recanto-map-preview:hover img,.recanto-map-preview:focus-visible img{transform:scale(1.015)}
+.recanto-map-preview:focus-visible{outline:3px solid #f8df89;outline-offset:3px}
+.recanto-map-preview-label{position:absolute;bottom:0;left:0;right:0;display:block;padding:28px 20px 17px;background:linear-gradient(transparent,rgba(15,30,22,.95));font-weight:700;color:#fff4d2;font-size:1rem;line-height:1.55;text-align:center}
+.recanto-map-preview-label small{display:block;color:#f3e9d2;font-size:.77rem;font-weight:500}
+/* v15 — imagens menores no lazer, mantendo cards legíveis e textos com respiro. */
+.recanto-lazer-highlight-card p{font-size:.91rem;line-height:1.75}
+.recanto-lazer-highlight-card p + p{margin-top:10px}
+.recanto-lazer-highlight-card h3{font-size:1.85rem}
+#lago .g4 figure img{height:175px;aspect-ratio:4/3;object-fit:cover}
+#lago .g2 figure.big img{max-height:325px;aspect-ratio:16/9;object-fit:cover}
+#lago .g figure{height:auto;align-self:start}
+@media(max-width:800px){.recanto-lazer-highlight-card img{height:195px}#lago .g4 figure img{height:170px}#lago .g2 figure.big img{height:auto;max-height:290px}}
