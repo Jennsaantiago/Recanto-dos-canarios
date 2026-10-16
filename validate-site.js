@@ -3,7 +3,16 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = __dirname;
 const pages=['index.html','empreendimento.html','lazer.html','localizacao.html','contato.html'];
-const footerBase=fs.readFileSync(path.join(root,'partials','footer.html'),'utf8').trim();
+const footerPattern=/<footer\b[^>]*\brecanto-footer\b[^>]*>[\s\S]*?<\/footer>/i;
+function footerBaseFromSource() {
+  for (const name of ['footer.html','partials/footer.html']) {
+    const filename=path.join(root,name);
+    if (fs.existsSync(filename)) return fs.readFileSync(filename,'utf8').match(footerPattern)?.[0];
+  }
+  return fs.readFileSync(path.join(root,'index.html'),'utf8').match(footerPattern)?.[0];
+}
+const footerBase=footerBaseFromSource();
+if (!footerBase) throw new Error('Rodapé de referência não encontrado');
 for (const page of pages) {
   const html=fs.readFileSync(path.join(root,page),'utf8');
   const footer=html.match(/<footer\b[^>]*\brecanto-footer\b[^>]*>[\s\S]*?<\/footer>/i)?.[0];
