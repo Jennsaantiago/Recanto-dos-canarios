@@ -1,11 +1,11 @@
 {
   "name": "recanto-dos-canarios",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "private": true,
   "description": "Site institucional Recanto dos Canários",
   "scripts": {
-    "build": "node validate-site.js && node build.js",
-    "check": "node --check app.js && node --check build.js && node --check server.js && node --check validate-site.js && node validate-site.js",
+    "build": "node sync-site.js && node validate-site.js && node build.js",
+    "check": "node --check app.js && node --check build.js && node --check server.js && node --check validate-site.js && node --check sync-site.js && node sync-site.js && node validate-site.js",
     "start": "node server.js"
   }
 }
