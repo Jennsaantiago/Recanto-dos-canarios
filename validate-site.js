@@ -69,3 +69,18 @@ for(const img of ['lazer-marina-guarda-barcos.webp','lazer-quadras.webp','lazer-
   if(!fs.existsSync(path.join(root,img))||!lazer.includes('src="'+img+'"'))throw new Error('Lazer: imagem '+img+' ausente');
 }
 console.log('OK: banners distintos, mapa externo sem iframe e textos do lazer verificados.');
+
+// v16: URLs amigáveis usadas em todos os menus, rodapés, cards e banners.
+const cleanUrls={'index.html':'/','empreendimento.html':'/empreendimento','lazer.html':'/lazer','localizacao.html':'/localizacao','contato.html':'/contato'};
+for (const page of pages) {
+ const html=fs.readFileSync(path.join(root,page),'utf8');
+ for(const [legacy,pretty] of Object.entries(cleanUrls)){
+   if(html.includes('href="'+legacy) || html.includes("href='"+legacy)) throw new Error(`${page}: link antigo presente: ${legacy}`);
+ }
+ if(!html.includes('rel="canonical"')) throw new Error(`${page}: URL canônica ausente`);
+}
+const footerHtml=fs.readFileSync(path.join(root,'footer.html'),'utf8');
+for(const legacy of Object.keys(cleanUrls)){
+ if(footerHtml.includes('href="'+legacy)) throw new Error(`footer.html: link antigo presente: ${legacy}`);
+}
+console.log('OK: links amigáveis e canonical presentes em todas as páginas.');
