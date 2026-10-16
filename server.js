@@ -19,6 +19,18 @@ http.createServer((req, res) => {
   let pathname;
   try { pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); }
   catch { res.writeHead(400).end('Bad Request'); return; }
+  // URLs públicas sem extensão; as URLs .html antigas redirecionam sem perder query params.
+  const cleanRoutes = new Set(['empreendimento','lazer','localizacao','contato']);
+  const cleanName = pathname.replace(/^\//, '');
+  const redirect = (location) => { res.writeHead(301, {Location: location + new URL(req.url, 'http://localhost').search}).end(); };
+  if (pathname === '/index.html') { redirect('/'); return; }
+  if (cleanRoutes.has(cleanName.replace(/\.html$/, '')) && cleanName.endsWith('.html')) {
+    redirect('/' + cleanName.slice(0,-5)); return;
+  }
+  if (pathname.endsWith('/') && cleanRoutes.has(cleanName.slice(0, -1))) {
+    redirect('/' + cleanName.slice(0,-1)); return;
+  }
+  if (cleanRoutes.has(cleanName)) pathname += '.html';
   const requested = path.resolve(root, '.' + pathname);
   if (requested !== root && !requested.startsWith(root + path.sep)) { res.writeHead(403).end('Forbidden'); return; }
   let file = requested;
