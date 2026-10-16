@@ -15,3 +15,8 @@
 .recanto-feature-section--dark .recanto-feature-link{color:#1e2e25!important}
 .recanto-nearby-badge{display:inline-block;border-left:4px solid #d4af37;padding:13px 16px;background:rgba(212,175,55,.12);font-weight:700;line-height:1.6;margin:4px 0 16px}
 @media(max-width:760px){.recanto-feature-inner{grid-template-columns:1fr}.recanto-feature-section{padding:50px 0}.recanto-video-frame{max-width:480px}.recanto-feature-section h2{font-size:clamp(2rem,8vw,2.8rem)}}
+
+/* Link de reprodução alternativo para navegadores que bloqueiam o vídeo embutido. */
+.recanto-video-helper { margin:12px auto 0; max-width:530px; font:500 13px/1.5 Inter,system-ui,sans-serif; text-align:center; color:#f3e9d2; }
+.recanto-video-helper a, .recanto-video-helper a:visited { color:#d4af37; font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+.recanto-video-helper a:hover { color:#fff4c7; }
