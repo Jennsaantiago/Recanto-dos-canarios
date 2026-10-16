@@ -2,20 +2,45 @@
   'use strict';
   const WHATSAPP_NUMBER = '5561999681544'; // IMPORTANTE: substitua pelo número oficial com código do país e DDD.
   const form = document.getElementById('f');
+  // Navegação compartilhada: mobile acessível e sem interferir no desktop.
   const navToggle = document.querySelector('.nav-toggle');
-  const siteNav = document.querySelector('.site-nav');
-  if (navToggle && siteNav) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = siteNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-      navToggle.textContent = isOpen ? 'Fechar' : 'Menu';
-    });
-    siteNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+  const siteNav = document.getElementById('site-nav');
+  const header = document.querySelector('.site-header');
+  if (navToggle && siteNav && header) {
+    const label = navToggle.querySelector('.nav-toggle-label');
+    const closeMenu = (returnFocus = false) => {
+      const wasOpen = siteNav.classList.contains('open');
       siteNav.classList.remove('open');
       navToggle.setAttribute('aria-expanded', 'false');
-      navToggle.textContent = 'Menu';
-    }));
+      navToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+      if (label) label.textContent = 'Menu';
+      if (returnFocus && wasOpen) navToggle.focus();
+    };
+    const openMenu = () => {
+      siteNav.classList.add('open');
+      navToggle.setAttribute('aria-expanded', 'true');
+      navToggle.setAttribute('aria-label', 'Fechar menu de navegação');
+      if (label) label.textContent = 'Fechar';
+    };
+    navToggle.addEventListener('click', () => {
+      if (siteNav.classList.contains('open')) closeMenu();
+      else openMenu();
+    });
+    siteNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => closeMenu());
+    });
+    document.addEventListener('click', event => {
+      if (!header.contains(event.target)) closeMenu();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && siteNav.classList.contains('open')) closeMenu(true);
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) closeMenu();
+    });
   }
+  const footerYear = document.getElementById('footer-year');
+  if (footerYear) footerYear.textContent = String(new Date().getFullYear());
   const lightbox = document.createElement('div');
   lightbox.className = 'lb';
   lightbox.setAttribute('role', 'dialog');
