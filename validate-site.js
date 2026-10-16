@@ -3,13 +3,12 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = __dirname;
 const pages=['index.html','empreendimento.html','lazer.html','localizacao.html','contato.html'];
-let footerBase;
+const footerBase=fs.readFileSync(path.join(root,'partials','footer.html'),'utf8').trim();
 for (const page of pages) {
   const html=fs.readFileSync(path.join(root,page),'utf8');
   const footer=html.match(/<footer\b[^>]*\brecanto-footer\b[^>]*>[\s\S]*?<\/footer>/i)?.[0];
   if(!footer) throw new Error(`${page}: rodapé Recanto não localizado`);
-  if(footerBase && footer !== footerBase) throw new Error(`${page}: rodapé diferente das outras páginas`);
-  footerBase=footer;
+  if(footer !== footerBase) throw new Error(`${page}: rodapé diferente das outras páginas`);
   for (const fragment of [
     'menu-rodape.css?v=7', 'class="recanto-menu"',
     'class="recanto-footer-recanto-logo"','class="recanto-footer-mg-logo"',
@@ -24,3 +23,12 @@ for(const [page,video] of [['empreendimento.html','video-empreendimento.mp4'],['
   if(!fs.existsSync(path.join(root,video))) throw new Error(`${video}: arquivo MP4 ausente`);
 }
 console.log('OK: logos, menu, rodapé iguais em 5 páginas; dois vídeos presentes.');
+
+// Proteção do mapa e da política de frames para publicação na Hostinger.
+const loc=fs.readFileSync(path.join(root,'localizacao.html'),'utf8');
+if(!loc.includes('https://www.google.com/maps/embed?pb=')) throw new Error('localizacao.html: mapa oficial do Google ausente');
+if(!loc.includes('class="map-embed recanto-google-map"')) throw new Error('localizacao.html: contêiner responsivo do mapa ausente');
+for(const name of ['server.js','_headers','.htaccess']) {
+  const config=fs.readFileSync(path.join(root,name),'utf8');
+  if(!config.includes('frame-src https://www.google.com https://maps.google.com')) throw new Error(`${name}: CSP bloqueia o Google Maps`);
+}
