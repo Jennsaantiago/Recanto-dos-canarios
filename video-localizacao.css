@@ -1,0 +1,17 @@
+/* Seções de vídeo e referência regional — Recanto dos Canários */
+.recanto-feature-section{padding:clamp(50px,7vw,90px) 0;background:#f3e9d2;color:#1e2e25}
+.recanto-feature-section--dark{background:#1e2e25;color:#f3e9d2}
+.recanto-feature-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(24px,5vw,72px)}
+.recanto-feature-copy{min-width:0}
+.recanto-feature-copy .eyebrow{display:block;color:#af8935;letter-spacing:.13em;font-weight:700;text-transform:uppercase;font-size:.82rem;margin-bottom:12px}
+.recanto-feature-section h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4vw,3.6rem);line-height:1.05;margin:0 0 18px;color:inherit}
+.recanto-feature-section p{font-family:Inter,Arial,sans-serif;font-size:1.05rem;line-height:1.8;margin:0 0 18px;color:inherit}
+.recanto-feature-section .recanto-location-note{font-size:.88rem;opacity:.78;line-height:1.6}
+.recanto-video-frame{width:100%;max-width:530px;margin-inline:auto;overflow:hidden;border:3px solid #d4af37;border-radius:18px;box-shadow:0 16px 42px rgba(0,0,0,.18);background:#0d1d17}
+.recanto-video-frame video{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;background:#0d1d17}
+.recanto-feature-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.recanto-feature-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 22px;border:1px solid #d4af37;border-radius:6px;background:#d4af37;color:#1e2e25!important;font-weight:700;text-decoration:none;transition:filter .15s}
+.recanto-feature-link:hover,.recanto-feature-link:focus-visible{filter:brightness(1.09);outline-offset:4px}
+.recanto-feature-section--dark .recanto-feature-link{color:#1e2e25!important}
+.recanto-nearby-badge{display:inline-block;border-left:4px solid #d4af37;padding:13px 16px;background:rgba(212,175,55,.12);font-weight:700;line-height:1.6;margin:4px 0 16px}
+@media(max-width:760px){.recanto-feature-inner{grid-template-columns:1fr}.recanto-feature-section{padding:50px 0}.recanto-video-frame{max-width:480px}.recanto-feature-section h2{font-size:clamp(2rem,8vw,2.8rem)}}
