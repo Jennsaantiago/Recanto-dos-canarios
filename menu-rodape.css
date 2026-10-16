@@ -60,3 +60,85 @@
 @media (max-width: 700px) {
  .recanto-footer-right img.recanto-footer-mg-logo { width: min(310px, 100%); }
 }
+
+
+/* Correção v6 — cartões de navegação sem links roxos/padrão do navegador.
+   Regras ausentes no CSS original, embora as classes existissem no HTML. */
+.quick-links.dk {
+  background: #1e2e25;
+  color: #f3e9d2;
+  padding: clamp(44px,6vw,80px) 0;
+  border-top: 1px solid rgba(212,175,55,.26);
+}
+.quick-links.dk .wrap > h2 { color:#f3e9d2; margin-bottom:30px; }
+.quick-links.dk .eyebrow { color:#d4af37; }
+.quick-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin-top:24px;
+}
+.quick-links .quick-grid > a.quick-card,
+.quick-links .quick-grid > a.quick-card:link,
+.quick-links .quick-grid > a.quick-card:visited {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:12px;
+  min-width:0;
+  padding:26px 24px;
+  color:#f3e9d2;
+  background:linear-gradient(160deg,#304b3c 0%,#23382d 95%);
+  text-decoration:none;
+  border:1px solid rgba(212,175,55,.43);
+  border-radius:16px;
+  box-shadow:0 9px 28px rgba(0,0,0,.17);
+  transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.quick-links .quick-grid > a.quick-card:hover,
+.quick-links .quick-grid > a.quick-card:focus-visible {
+  transform:translateY(-4px);
+  border-color:#d4af37;
+  background:#304d3d;
+  box-shadow:0 12px 32px rgba(0,0,0,.25);
+}
+.quick-links .quick-card > span:first-child {
+  font:700 13px Inter,system-ui,sans-serif;
+  color:#d4af37;
+  letter-spacing:.16em;
+}
+.quick-links .quick-card h3 {
+  color:#f3e9d2;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:clamp(1.65rem,2.6vw,2.12rem);
+  margin:0;
+  line-height:1.2;
+}
+.quick-links .quick-card p {
+  color:#e4e9d9;
+  font-size:14px;
+  line-height:1.7;
+  margin:0 0 auto;
+}
+.quick-links .quick-card b {
+  display:inline-flex;
+  align-items:center;
+  margin-top:15px;
+  padding:9px 15px;
+  border:1px solid #d4af37;
+  border-radius:999px;
+  background:rgba(212,175,55,.1);
+  color:#f2cf70;
+  font:700 13px Inter,system-ui,sans-serif;
+  text-decoration:none;
+}
+.quick-links .quick-card:hover b {background:#d4af37;color:#1e2e25}
+@media(max-width:800px) {.quick-grid {grid-template-columns:1fr 1fr}}
+@media(max-width:560px) {
+ .quick-grid {grid-template-columns:1fr;gap:12px}
+ .quick-links .quick-grid > a.quick-card {padding:23px 20px}
+}
+@media(prefers-reduced-motion:reduce) {
+ .quick-links .quick-grid > a.quick-card{transition:none}
+ .quick-links .quick-grid > a.quick-card:hover {transform:none}
+}
