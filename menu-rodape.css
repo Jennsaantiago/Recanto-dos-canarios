@@ -1,0 +1,62 @@
+/* Recanto dos Canários | MENU NATIVO + RODAPÉ DAS DUAS MARCAS
+   Mantém o site estático. O menu usa <details>, sem depender de JS.
+   Paleta da marca: #D4AF37 #F3E9D2 #2F4A3A #1E2E25. */
+.recanto-header.site-header.top { position: sticky; inset: auto; top: 0; z-index: 10000; background: #1e2e25; border-bottom: 2px solid #d4af37; padding: 0; box-shadow: 0 8px 24px #0003; }
+.recanto-header .recanto-header-inner { min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 20px; position: relative; }
+.recanto-header.top .recanto-header-logo { border: none; padding: 3px; border-radius: 6px; display: flex; align-items: center; }
+.recanto-header-logo img { display: block; width: 69px; height: 69px; object-fit: contain; }
+.recanto-menu { position: relative; z-index: 10002; }
+.recanto-menu-button { display: flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; list-style: none; border: 1px solid #d4af37; border-radius: 10px; min-height: 48px; min-width: 127px; padding: 10px 15px; color: #f3e9d2; background: #2f4a3a; font: 700 14px Inter,system-ui,sans-serif; letter-spacing: .02em; user-select: none; }
+.recanto-menu-button::-webkit-details-marker { display: none; }
+.recanto-menu-button::marker { content: ''; }
+.recanto-menu-button:hover,.recanto-menu[open] .recanto-menu-button { background: #3c5948; color: #d4af37; }
+.recanto-hamburger { display: flex; width: 20px; flex-direction: column; gap: 4px; }
+.recanto-hamburger span { display: block; width: 100%; height: 2px; background: #d4af37; border-radius: 10px; transition: transform .2s,opacity .2s; }
+.recanto-menu[open] .recanto-hamburger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.recanto-menu[open] .recanto-hamburger span:nth-child(2) { opacity: 0; }
+.recanto-menu[open] .recanto-hamburger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+.recanto-menu-chevron { font-size: 21px; line-height: 1; margin-left: 2px; transition: transform .2s; }
+.recanto-menu[open] .recanto-menu-chevron { transform: rotate(180deg); }
+.recanto-menu-panel { position: absolute; top: calc(100% + 10px); right: 0; width: min(320px, calc(100vw - 32px)); background: #1e2e25; border: 1px solid #d4af37; border-radius: 12px; padding: 9px; box-shadow: 0 15px 38px #0007; display: grid; gap: 3px; }
+.recanto-header.top .recanto-menu-panel a { display: block; border: 0; border-radius: 7px; padding: 11px 13px; color: #f3e9d2; font: 600 14px Inter,system-ui,sans-serif; white-space: normal; text-decoration: none; }
+.recanto-header.top .recanto-menu-panel a:hover,.recanto-header.top .recanto-menu-panel a:focus-visible,.recanto-header.top .recanto-menu-panel a[aria-current="page"] { color: #1e2e25; background: #d4af37; }
+.recanto-header.top .recanto-menu-panel a[aria-current="page"] { box-shadow: none; }
+.recanto-menu-button:focus-visible,.recanto-header.top .recanto-menu-panel a:focus-visible { outline: 3px solid #d4af37; outline-offset: 3px; }
+/* Rodapé com logomarcas na base, em extremos opostos. */
+.site-footer.recanto-footer { background: #1e2e25; color: #f3e9d2; padding: 38px 0 max(22px,env(safe-area-inset-bottom,0px)); border-top: 4px solid #d4af37; font-family: Inter,system-ui,sans-serif; text-align: left; }
+.recanto-footer .recanto-footer-inner { max-width: 1100px; }
+.recanto-footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding-bottom: 28px; border-bottom: 1px solid #d4af3750; }
+.recanto-footer-top p { color: #f3e9d2; font-size: 14px; margin: 0; max-width: 240px; line-height: 1.6; }
+.recanto-footer-links { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px 21px; }
+.site-footer.recanto-footer .recanto-footer-links a,.site-footer.recanto-footer .recanto-footer-bottom a { color: #f3e9d2; text-decoration: none; font-size: 13px; }
+.site-footer.recanto-footer a:hover { color: #d4af37; }
+.recanto-footer-brands { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: end; gap: 28px; padding: 28px 0 32px; }
+.recanto-footer-left { display: flex; justify-content: flex-start; align-items: flex-end; min-width: 0; }
+.recanto-footer-left > a { display: inline-flex; border: 0; }
+.site-footer.recanto-footer .recanto-footer-recanto-logo { display: block; height: 170px; width: 170px; object-fit: contain; max-width: 100%; }
+.recanto-footer-right { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; text-align: right; min-width: 0; }
+.site-footer.recanto-footer .recanto-footer-mg-logo { display: block; width: min(320px,100%); height: auto; max-height: 170px; object-fit: contain; object-position: right bottom; margin-bottom: 13px; }
+.site-footer.recanto-footer .recanto-footer-legal { max-width: 345px; color: #f3e9d2; font-size: 13px; font-weight: 500; line-height: 1.65; margin: 0 0 7px; }
+.site-footer.recanto-footer .recanto-footer-cnpj { margin: 0; font-size: 13px; color: #d4af37; letter-spacing: .02em; }
+.site-footer.recanto-footer .recanto-footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 18px; border-top: 1px solid #d4af3750; padding-top: 18px; margin-top: 0; color: #bbc9ba; font-size: 12px; }
+@media(max-width:700px) {
+ .recanto-header .recanto-header-inner { min-height: 72px; }
+ .recanto-header-logo img { width: 60px; height: 60px; }
+ .recanto-menu-panel { right: 0; }
+ .recanto-footer-top { display: block; }
+ .recanto-footer-top p { margin: 0 0 18px; }
+ .recanto-footer-links { justify-content: flex-start; }
+ .recanto-footer-brands { grid-template-columns: 1fr; gap: 25px; }
+ .recanto-footer-left { justify-content: flex-start; }
+ .recanto-footer-right { align-items: flex-end; text-align: right; }
+ .site-footer.recanto-footer .recanto-footer-recanto-logo { width: 145px; height: 145px; }
+ .site-footer.recanto-footer .recanto-footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+@media(prefers-reduced-motion:reduce){.recanto-hamburger span,.recanto-menu-chevron {transition:none}}
+
+/* Logos oficiais enviadas pelo cliente (versão 4). */
+.recanto-footer-left img.recanto-footer-recanto-logo { object-fit: contain; }
+.recanto-footer-right img.recanto-footer-mg-logo { object-fit: contain; object-position: right center; }
+@media (max-width: 700px) {
+ .recanto-footer-right img.recanto-footer-mg-logo { width: min(310px, 100%); }
+}
