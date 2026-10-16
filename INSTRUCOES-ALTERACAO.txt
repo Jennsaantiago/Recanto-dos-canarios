@@ -1,0 +1,29 @@
+RECANTO DOS CANARIOS — VERSAO INSTITUCIONAL
+
+O que foi alterado:
+- index.html: página inicial.
+- empreendimento.html: informações do empreendimento, terreno e entrada/portaria.
+- lazer.html: lago, lazer e centro comercial.
+- localizacao.html: informações de localização e link de busca no Google Maps.
+- contato.html: formulário de interesse.
+- styles.css: navegação institucional, cartões de navegação e rodapé responsivo.
+- app.js: menu mobile e manutenção do formulário/lightbox.
+- build.js: inclui as páginas novas no diretório dist.
+
+COMO TESTAR LOCALMENTE
+1. Instale uma versão recente do Node.js.
+2. Na pasta do projeto, execute: npm run build
+3. Abra a pasta dist com um servidor estático local ou publique-a na hospedagem.
+
+PUBLICAÇÃO NA VERCEL
+- Confirme que o Build Command é `npm run build`.
+- Configure o Output Directory como `dist`.
+- Publique primeiro em um preview e teste todos os links antes de promover para produção.
+
+IMPORTANTE ANTES DE PUBLICAR
+- app.js contém o número de WhatsApp de exemplo 5561900000000. Substitua-o pelo número oficial do empreendimento, com código do país e DDD.
+- Confirme os textos sobre infraestrutura, segurança, lotes e áreas de lazer com o responsável pelo empreendimento.
+- A página de localização abre uma busca no Google Maps; confirme o ponto de entrada oficial e os acessos com a equipe comercial.
+- Revise imagens e direitos de uso antes de publicar.
+
+Esta versão reutiliza a estrutura e as imagens já presentes no projeto e não altera automaticamente o repositório GitHub nem publica no domínio oficial.

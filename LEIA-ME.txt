@@ -1,0 +1,16 @@
+RECANTO DOS CANÁRIOS — LANDING PAGE
+
+Arquivos:
+- index.html: página principal e imagens/vídeo incorporados.
+- styles.css: estilos e responsividade.
+- app.js: formulário WhatsApp e ampliação de imagens.
+- _headers: cabeçalhos de segurança para hospedagens que suportam esse formato (ex.: Netlify).
+- .htaccess: cabeçalhos de segurança para Apache com mod_headers habilitado.
+
+ANTES DE PUBLICAR:
+1. Abra app.js e substitua 5561900000000 pelo WhatsApp oficial (DDI + DDD + número, apenas dígitos). O número atual veio do HTML original e parece ser provisório.
+2. Confira textos, imagens, vídeo, disponibilidade dos empreendimentos e todas as afirmações comerciais.
+3. Faça upload de index.html, styles.css e app.js na mesma pasta. Publique também _headers OU configure os cabeçalhos equivalentes na hospedagem. O .htaccess só serve para Apache.
+4. A CSP do HTML é uma camada adicional; cabeçalhos HTTP da hospedagem são preferíveis. Se adicionar scripts, pixels, mapas, vídeos externos ou formulários de terceiros, ajuste a CSP somente para os domínios necessários.
+5. O formulário abre WhatsApp e não envia os dados para um banco de dados. Não é um backend, CRM, antifraude ou proteção contra spam. Para armazenar leads, use um backend com validação no servidor, rate limiting, proteção contra abuso e aviso de privacidade/LGPD.
+6. Teste a página em HTTPS, celular e desktop antes de divulgar.
