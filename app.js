@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const WHATSAPP_NUMBER = '5561999681544'; // IMPORTANTE: substitua pelo número oficial com código do país e DDD.
+  const WHATSAPP_NUMBER = '5561999681544'; // Recanto dos Canários: (61) 99968-1544 (confirmado).
   const form = document.getElementById('f');
   // Navegação compartilhada: mobile acessível e sem interferir no desktop.
   const navToggle = document.querySelector('.nav-toggle');
@@ -74,7 +74,7 @@
       const name = String(data.get('nome') || '').trim().slice(0, 100);
       const tel = String(data.get('tel') || '').trim().slice(0, 30);
       const interest = String(data.get('int') || 'Moradia').trim().slice(0, 40);
-      const message = `Olá! Meu nome é ${name}. Tenho interesse no Recanto dos Canários (${interest}). Gostaria de receber informações.`;
+      const message = `Olá! Meu nome é ${name}. Tenho interesse no Recanto dos Canários (${interest}). Meu WhatsApp: ${tel}. Gostaria de receber informações.`;
       openWhatsApp(message);
     });
   }
