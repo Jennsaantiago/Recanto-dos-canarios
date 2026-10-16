@@ -33,11 +33,11 @@ for(const [page,video] of [['empreendimento.html','video-empreendimento.mp4'],['
 }
 console.log('OK: logos, menu, rodapé iguais em 5 páginas; dois vídeos presentes.');
 
-// Confere o acesso direto ao mapa (sem iframe, evitando bloqueio de incorporação).
+// Confere o acesso ao mapa (com link oficial e possibilidade de incorporação).
 const loc=fs.readFileSync(path.join(root,'localizacao.html'),'utf8');
 if(!loc.includes('class="recanto-map-access"')) throw new Error('localizacao.html: cartão de localização ausente');
 if(!loc.includes('https://www.google.com/maps/')) throw new Error('localizacao.html: link oficial do mapa ausente');
-if(loc.includes('<iframe')) throw new Error('localizacao.html: iframe bloqueável não deve ser usado');
+if(!loc.includes('class="recanto-map-embed"')) throw new Error('localizacao.html: área visual do mapa ausente');
 
 // v13: presença dos banners, social, cards de navegação e áreas especificadas.
 for (const page of pages) {
