@@ -13,7 +13,7 @@ const mime = {
 };
 const excluded = new Set(['package.json','package-lock.json','build.js','server.js','_headers']);
 const port = Number(process.env.PORT) || 3000;
-const policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; media-src 'self' data: https:; connect-src 'self'; form-action 'self'; upgrade-insecure-requests";
+const policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; media-src 'self' data: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; form-action 'self'; upgrade-insecure-requests";
 http.createServer((req, res) => {
   if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405,{Allow:'GET, HEAD'}).end(); return; }
   let pathname;
