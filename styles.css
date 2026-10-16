@@ -73,3 +73,206 @@ footer small{display:block;max-width:80ch;margin:0 auto;color:#c9cfc0}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 button:disabled{opacity:.65;cursor:wait}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* ================================================================
+   MENU E RODAPÉ — componentes compartilhados pelas cinco páginas.
+   Mantém a paleta original do Recanto dos Canários.
+   ================================================================ */
+.site-header.top {
+  position: sticky;
+  top: 0;
+  inset: auto;
+  z-index: 1000;
+  width: 100%;
+  padding: 0;
+  background: rgba(30, 46, 37, .98);
+  border-bottom: 1px solid rgba(212, 175, 55, .28);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .12);
+}
+.site-header .nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 82px;
+  position: relative;
+}
+.site-header.top .brand {
+  display: inline-block;
+  flex-shrink: 0;
+  border: 0;
+  padding: 0;
+  color: #F3E9D2;
+  border-radius: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.25rem, 2.1vw, 1.55rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  font-weight: 700;
+  text-decoration: none;
+}
+.site-header.top .brand span { color: #D4AF37; }
+.site-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: clamp(8px, 1.15vw, 20px);
+  flex-wrap: nowrap;
+}
+.site-header.top .site-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 9px 5px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #F3E9D2;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .79rem;
+  font-weight: 600;
+  transition: color .18s ease, background .18s ease;
+}
+.site-header.top .site-nav a:hover,
+.site-header.top .site-nav a[aria-current="page"] { color: #D4AF37; }
+.site-header.top .site-nav a[aria-current="page"]:not(.nav-cta) { box-shadow: inset 0 -2px 0 #D4AF37; }
+.site-header.top .site-nav .nav-cta {
+  padding: 9px 15px;
+  border: 1px solid #D4AF37;
+  border-radius: 999px;
+  color: #D4AF37;
+}
+.site-header.top .site-nav .nav-cta:hover,
+.site-header.top .site-nav .nav-cta[aria-current="page"] {
+  background: #D4AF37;
+  color: #1E2E25;
+}
+.site-header .nav-toggle { display: none; }
+
+/* Rodapé de 3 áreas, com links sempre legíveis e clicáveis. */
+.site-footer {
+  background: #1E2E25;
+  color: #F3E9D2;
+  border-top: 3px solid #D4AF37;
+  padding: 52px 0 calc(22px + env(safe-area-inset-bottom, 0px));
+  text-align: left;
+  font-size: .94rem;
+}
+.site-footer .footer-inner {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.35fr) minmax(240px, 1fr) minmax(190px, 1.05fr);
+  align-items: start;
+  gap: 30px;
+}
+.site-footer .footer-title {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: #D4AF37;
+  text-decoration: none;
+}
+.site-footer .footer-brand p,
+.site-footer .footer-note { margin: 9px 0 0; color: #d3d7cd; line-height: 1.7; }
+.site-footer .footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 18px;
+}
+.site-footer .footer-links a,
+.site-footer .footer-bottom a {
+  color: #F3E9D2;
+  text-decoration: none;
+  transition: color .18s ease;
+}
+.site-footer .footer-links a { padding: 4px 0; }
+.site-footer .footer-links a:hover,
+.site-footer .footer-bottom a:hover,
+.site-footer .footer-title:hover { color: #D4AF37; }
+.site-footer .footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(243, 233, 210, .22);
+  margin-top: 34px;
+  padding-top: 18px;
+  font-size: .8rem;
+  color: #c3cbbf;
+}
+
+@media (max-width: 900px) {
+  .site-header .nav-wrap { min-height: 72px; }
+  .site-header .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 44px;
+    min-width: 100px;
+    padding: 10px 13px;
+    color: #D4AF37;
+    background: transparent;
+    border: 1px solid #D4AF37;
+    border-radius: 9px;
+    cursor: pointer;
+    font: 600 .9rem Inter, system-ui, sans-serif;
+  }
+  .nav-toggle-icon { display: flex; width: 18px; flex-direction: column; gap: 4px; }
+  .nav-toggle-icon span { display: block; height: 2px; width: 100%; background: currentColor; border-radius: 2px; transition: transform .2s, opacity .2s; }
+  .site-header .nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .site-header .nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(2) { opacity: 0; }
+  .site-header .nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .site-header.top .site-nav {
+    display: none;
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 20px;
+    right: 20px;
+    z-index: 1001;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3px;
+    max-height: calc(100dvh - 85px);
+    overflow-y: auto;
+    padding: 12px;
+    border: 1px solid rgba(212, 175, 55, .4);
+    border-radius: 0 0 14px 14px;
+    background: #1E2E25;
+    box-shadow: 0 16px 30px rgba(0,0,0,.3);
+  }
+  .site-header.top .site-nav.open { display: flex; }
+  .site-header.top .site-nav a {
+    display: flex;
+    justify-content: flex-start;
+    min-height: 44px;
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 7px;
+    font-size: .95rem;
+  }
+  .site-header.top .site-nav a[aria-current="page"]:not(.nav-cta) { background: rgba(212, 175, 55, .12); box-shadow: none; }
+  .site-header.top .site-nav .nav-cta { justify-content: center; margin-top: 6px; }
+  .site-footer .footer-inner { grid-template-columns: 1fr 1fr; }
+  .site-footer .footer-note { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  .site-header .nav-wrap { min-height: 66px; }
+  .site-header.top .brand { font-size: 1.22rem; letter-spacing: .02em; }
+  .site-header .nav-toggle { min-width: 92px; }
+  .site-footer { padding-top: 38px; }
+  .site-footer .footer-inner { grid-template-columns: 1fr; gap: 22px; }
+  .site-footer .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site-footer .footer-note { grid-column: auto; }
+  .site-footer .footer-bottom { align-items: flex-start; flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header .nav-toggle *, .site-nav a, .site-footer a { transition: none !important; }
+}
