@@ -19,7 +19,7 @@ for (const page of pages) {
   if(!footer) throw new Error(`${page}: rodapé Recanto não localizado`);
   if(footer !== footerBase) throw new Error(`${page}: rodapé diferente das outras páginas`);
   for (const fragment of [
-    'menu-rodape.css?v=12', 'class="recanto-menu"',
+    'menu-rodape.css?v=13', 'class="recanto-menu"',
     'class="recanto-footer-recanto-logo"','class="recanto-footer-mg-logo"',
     '57.456.057/0001-17','data:image/webp;base64,'
   ]) {
@@ -38,3 +38,20 @@ const loc=fs.readFileSync(path.join(root,'localizacao.html'),'utf8');
 if(!loc.includes('class="recanto-map-access"')) throw new Error('localizacao.html: cartão de localização ausente');
 if(!loc.includes('https://www.google.com/maps/')) throw new Error('localizacao.html: link oficial do mapa ausente');
 if(loc.includes('<iframe')) throw new Error('localizacao.html: iframe bloqueável não deve ser usado');
+
+// v13: presença dos banners, social, cards de navegação e áreas especificadas.
+for (const page of pages) {
+ const html=fs.readFileSync(path.join(root,page),'utf8');
+ if (!html.includes('recanto-instagram-feature')) throw new Error(`${page}: Instagram não visível no rodapé`);
+ if (!html.includes('https://www.instagram.com/recantodoscanarioscorumba/')) throw new Error(`${page}: URL do Instagram incorreta`);
+ if (page!=='index.html' && !html.includes('recanto-page-hero')) throw new Error(`${page}: banner com imagem de fundo não encontrado`);
+}
+for(const name of ['index.html','empreendimento.html']){
+ const html=fs.readFileSync(path.join(root,name),'utf8');
+ if ((html.match(/class="it recanto-info-card"/g)||[]).length!==5) throw new Error(`${name}: cinco cards clicáveis ausentes`);
+}
+const lazer=fs.readFileSync(path.join(root,'lazer.html'),'utf8');
+for(const text of ['Arena poliesportiva','Quadra poliesportiva','Café','Mercado','Lojas, serviços, gastronomia e muito mais','recanto-bali-lake']){
+ if(!lazer.includes(text))throw new Error(`lazer.html: conteúdo obrigatório ausente: ${text}`);
+}
+console.log('OK: banners, Instagram e cards clicáveis verificados.');
